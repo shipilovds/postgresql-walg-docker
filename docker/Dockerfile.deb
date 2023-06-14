@@ -1,0 +1,12 @@
+#============================================================================#
+#===========================| Deb Builder Image |============================#
+#============================================================================#
+FROM ghcr.io/shipilovds/deb-builder as deb
+WORKDIR /build/deb
+ARG WALG_UTILS_RELEASE
+COPY wal-g-utils wal-g-utils
+COPY debian debian
+COPY configs/sudoers wal-g-sudoers
+RUN sed -i "s|^Version:.*|Version: $WALG_UTILS_RELEASE|g" debian/control
+RUN dpkg-buildpackage -b
+WORKDIR /build

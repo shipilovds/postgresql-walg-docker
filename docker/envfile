@@ -1,0 +1,28 @@
+# Maintenance vars
+MAINTENANCE=false
+WALG_ENABLED=true
+
+# Postgres vars
+POSTGRES_DB="test"
+POSTGRES_USER="test"
+POSTGRES_PASSWORD="test"
+PGDATA='/var/lib/postgresql/data'
+PGHOST='/var/run/postgresql/'
+PGUSER=test
+PGPORT=5432
+
+# Wal-g vars
+WALG_DELTA_MAX_STEPS=1
+WALG_COMPRESSION_METHOD=brotli
+
+# S3 vars
+WALG_S3_PREFIX="s3://backup/wal-g/test"
+AWS_S3_FORCE_PATH_STYLE='true'
+AWS_ENDPOINT="https://some.addr/"  # replace with your aws base url
+AWS_ACCESS_KEY_ID="admin"
+AWS_SECRET_ACCESS_KEY="change_me"
+AWS_REGION='dc01'
+
+# Exporter vars
+EXPORTER_OPS_MODE='oneshot'
+EXPORTER_UNIT_NAME='test'

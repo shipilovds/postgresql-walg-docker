@@ -1,0 +1,25 @@
+defaults:
+  shell: /bin/bash
+  utc: true
+  timezone: UTC
+  environment:
+    - key: WALG_LOG_DEST
+      value: /dev/stdout
+  streamPrefix: "[{job_name}] "
+jobs:
+  - name: metrics
+    command: /usr/bin/wal-g-exporter
+    schedule: "0 * * * *"  # Every hour
+    captureStdout: true
+    captureStderr: true
+  - name: backup-push
+    command: /var/lib/wal-g-utils/backup-push.sh
+    schedule: "05 */12 * * *"  # Every 12h in 05m
+    captureStdout: true
+    captureStderr: true
+  - name: Retention
+    # save 15 full backups. It is a week+ if WALG_DELTA_MAX_STEPS=1
+    command: /usr/bin/wal-g delete retain FIND_FULL 15 --use-sentinel-time --confirm
+    schedule: "0 0 * * *"  # Every day at 00:00 UTC
+    captureStdout: true
+    captureStderr: true

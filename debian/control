@@ -1,0 +1,11 @@
+Source: wal-g-utils
+Section: utils
+Priority: optional
+Maintainer: Denis Shipilov <shipilovds@gmail.com>
+Build-Depends: debhelper (>= 12)
+
+Package: wal-g-utils
+Architecture: all
+Depends: sudo, postgresql-client, wal-g
+Description: Scripts to maintain Postgresql server with wal-g utility
+Version: REPLACE_ME

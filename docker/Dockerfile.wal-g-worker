@@ -1,0 +1,25 @@
+#============================================================================#
+#=========================| Wal-g Worker Image |=============================#
+#============================================================================#
+FROM ghcr.io/shipilovds/wal-g-exporter as wal-g-worker
+ARG DEBIAN_FRONTEND=noninteractive
+ENTRYPOINT ["bash", "/usr/bin/docker-entrypoint.sh"]
+CMD ["/usr/bin/yacron", "-c", "/etc/yacron.yml"]
+RUN groupadd -r postgres --gid=999
+RUN useradd -r -g postgres --uid=999 -M -N --shell=/bin/bash postgres
+RUN mkdir -p /prometheus /var/lib/wal-g-utils
+RUN apt update && apt install -y curl sudo postgresql-client && rm -rf /var/lib/apt/lists/*
+ARG YACRON_RELEASE=0.19.0
+ARG YACRON_URL=https://github.com/gjcarneiro/yacron/releases/download/$YACRON_RELEASE/yacron-$YACRON_RELEASE-x86_64-unknown-linux-gnu
+COPY --chmod=755 --from=minio/mc        /bin/mc        /usr/bin/
+ADD  --chmod=755   $YACRON_URL                         /usr/bin/yacron
+COPY --chmod=644   configs/yacron.yml                  /etc/
+COPY --chmod=755   docker/entrypoint.wal-g-worker.sh   /usr/bin/docker-entrypoint.sh
+COPY --chmod=644   wal-g-utils/common.sh               /var/lib/wal-g-utils/
+COPY --chmod=755   wal-g-utils/backup-fetch.sh         /var/lib/wal-g-utils/
+COPY --chmod=755   wal-g-utils/backup-list.sh          /var/lib/wal-g-utils/
+COPY --chmod=755   wal-g-utils/backup-push.sh          /var/lib/wal-g-utils/
+COPY --chmod=755   wal-g-utils/wal-fetch.sh            /var/lib/wal-g-utils/
+COPY --chmod=755   wal-g-utils/wal-push.sh             /var/lib/wal-g-utils/
+COPY --chmod=644   configs/sudoers                     /etc/sudoers.d/wal-g
+COPY --chmod=644   docker/Dockerfile.wal-g-worker      /Dockerfile

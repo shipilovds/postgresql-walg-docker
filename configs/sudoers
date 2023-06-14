@@ -1,0 +1,1 @@
+postgres ALL=(ALL) NOPASSWD:SETENV: /usr/bin/tee,/usr/bin/wal-g,/var/lib/wal-g-utils/*

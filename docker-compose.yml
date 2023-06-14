@@ -1,0 +1,55 @@
+version: '2'
+services:
+  postgres:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.postgres
+      args:
+        POSTGRES_VERSION: ${POSTGRES_VERSION:-14.11}
+        BASE_DIST: ${BASE_DIST:-bookworm}
+      labels:
+        - "org.opencontainers.image.source=https://github.com/shipilovds/postgresql-walg-docker"
+        - "org.opencontainers.image.description=PostgreSQL image with wal-g inside"
+        - "org.opencontainers.image.authors=@shipilovds (shipilovds@gmail.com)"
+        - "org.opencontainers.image.url=https://github.com/shipilovds/postgresql-walg-docker"
+        - "org.opencontainers.image.documentation=https://github.com/shipilovds/postgresql-walg-docker/blob/main/docs/postgres.md"
+        - "org.opencontainers.image.version=${POSTGRES_IMAGE_TAG:-walg}"
+    image: ${POSTGRES_IMAGE_NAME:-postgres}:${POSTGRES_IMAGE_TAG:-walg}
+    container_name: postgres_test
+    restart: always
+    env_file: docker/envfile
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./db-run/:/var/run/postgresql/
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -h /var/run/postgresql/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  wal-g-worker:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.wal-g-worker
+      labels:
+        - "org.opencontainers.image.source=https://github.com/shipilovds/postgresql-walg-docker"
+        - "org.opencontainers.image.description=PostgreSQL Backup, Maintenance and Monitoring Toolset (Based on WAL-G)"
+        - "org.opencontainers.image.authors=@shipilovds (shipilovds@gmail.com)"
+        - "org.opencontainers.image.url=https://github.com/shipilovds/postgresql-walg-docker"
+        - "org.opencontainers.image.documentation=https://github.com/shipilovds/postgresql-walg-docker/blob/main/docs/wal-g-worker.md"
+        - "org.opencontainers.image.version=${WALG_WORKER_IMAGE_TAG:-latest}"
+    image: ${WALG_WORKER_IMAGE_NAME:-wal-g-worker}:${WALG_WORKER_IMAGE_TAG:-latest}
+    container_name: walg_test
+    restart: always
+    env_file: docker/envfile
+    volumes:
+      - ./db-data:/var/lib/postgresql/data
+      - ./db-run:/var/run/postgresql
+
+  deb:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.deb
+      args:
+        WALG_UTILS_RELEASE: ${WALG_UTILS_RELEASE:-1.0.0}
+    image: deb

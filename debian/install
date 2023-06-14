@@ -1,0 +1,8 @@
+wal-g-utils/common.sh           /var/lib/wal-g-utils/common.sh
+wal-g-utils/backup-fetch.sh     /var/lib/wal-g-utils/backup-fetch.sh
+wal-g-utils/backup-list.sh      /var/lib/wal-g-utils/backup-list.sh
+wal-g-utils/backup-push.sh      /var/lib/wal-g-utils/backup-push.sh
+wal-g-utils/wal-fetch.sh        /var/lib/wal-g-utils/wal-fetch.sh
+wal-g-utils/wal-push.sh         /var/lib/wal-g-utils/wal-push.sh
+wal-g-utils/recovery.sh         /var/lib/wal-g-utils/recovery.sh
+wal-g-sudoers                   /etc/sudoers.d/wal-g
