@@ -1,0 +1,279 @@
+Cron job '0 * * * * root bash /usr/local/bin/backup-push.sh' added to schedule
+
+Trying to connect to storage https://some.addr/
+Added `s3` successfully.
+Success: Connection with storage has been established
+Bucket created successfully `s3/backup/db/test/`.
+Storage space for host has been created
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Etc/UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2022-02-08 16:27:47.243 UTC [90] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-08 16:27:47.243 UTC [90] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-08 16:27:47.244 UTC [90] LOG:  listening on IPv6 address "::", port 5432
+2022-02-08 16:27:47.359 UTC [90] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-08 16:27:47.540 UTC [91] LOG:  database system was shut down at 2022-02-08 16:27:30 UTC
+2022-02-08 16:27:47.604 UTC [90] LOG:  database system is ready to accept connections
+ done
+server started
+CREATE DATABASE
+
+
+/usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+
+2022-02-08 16:27:53.371 UTC [90] LOG:  received fast shutdown request
+waiting for server to shut down....2022-02-08 16:27:53.406 UTC [90] LOG:  aborting any active transactions
+2022-02-08 16:27:53.408 UTC [90] LOG:  background worker "logical replication launcher" (PID 97) exited with exit code 1
+2022-02-08 16:27:53.409 UTC [92] LOG:  shutting down
+2022-02-08 16:27:53.795 UTC [90] LOG:  database system is shut down
+ done
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+2022-02-08 16:27:54,175 INFO Set uid to user 0 succeeded
+2022-02-08 16:27:54,186 INFO RPC interface 'supervisor' initialized
+2022-02-08 16:27:54,187 INFO supervisord started with pid 1
+2022-02-08 16:27:55,204 INFO spawned: 'cron' with pid 144
+2022-02-08 16:27:55,210 INFO spawned: 'postgres' with pid 148
+2022-02-08 16:27:55.261 GMT [148] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-08 16:27:55.262 GMT [148] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-08 16:27:55.262 GMT [148] LOG:  listening on IPv6 address "::", port 5432
+2022-02-08 16:27:55.304 GMT [148] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-08 16:27:55.543 GMT [150] LOG:  database system was shut down at 2022-02-08 16:27:53 GMT
+2022-02-08 16:27:55.608 GMT [148] LOG:  database system is ready to accept connections
+2022-02-08 16:27:56,610 INFO success: cron entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-02-08 16:27:56,611 INFO success: postgres entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-02-08 16:37:56.275 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 16:37:56.836 INFO: 2022/02/08 16:37:56.827398 FILE PATH: 000000010000000000000001.br
+2022-02-08 16:37:56.847 INFO: WAL Backup Completed
+2022-02-08 16:47:57.011 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 16:47:57.217 INFO: 2022/02/08 16:47:57.209545 FILE PATH: 000000010000000000000002.br
+2022-02-08 16:47:57.228 INFO: WAL Backup Completed
+2022-02-08 16:57:56.814 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 16:57:57.021 INFO: 2022/02/08 16:57:57.012488 FILE PATH: 000000010000000000000003.br
+2022-02-08 16:57:57.032 INFO: WAL Backup Completed
+2022-02-08 17:00:01.352 INFO: Start Backup (backup-push.sh)
+2022-02-08 17:00:01.876 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:00:02.080 INFO: 2022/02/08 17:00:02.073955 FILE PATH: 000000010000000000000004.br
+2022-02-08 17:00:02.089 INFO: WAL Backup Completed
+2022-02-08 17:00:03.505 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:00:03.669 INFO: 2022/02/08 17:00:03.660908 FILE PATH: 000000010000000000000005.00000028.backup.br
+2022-02-08 17:00:03.679 INFO: 2022/02/08 17:00:03.660912 FILE PATH: 000000010000000000000005.br
+2022-02-08 17:00:03.689 INFO: WAL Backup Completed
+2022-02-08 17:00:03.831 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:00:03.897 INFO: WAL Backup Completed
+2022-02-08 17:00:05.560 INFO: 2022/02/08 17:00:01.425319 Selecting the latest backup as the base for the current delta backup...
+2022-02-08 17:00:05.570 INFO: 2022/02/08 17:00:01.532388 Couldn't find previous backup. Doing full backup.
+2022-02-08 17:00:05.583 INFO: 2022/02/08 17:00:01.554206 Calling pg_start_backup()
+2022-02-08 17:00:05.611 INFO: 2022/02/08 17:00:02.916546 Starting a new tar bundle
+2022-02-08 17:00:05.621 INFO: 2022/02/08 17:00:02.916660 Walking ...
+2022-02-08 17:00:05.631 INFO: 2022/02/08 17:00:02.916985 Starting part 1 ...
+2022-02-08 17:00:05.640 INFO: 2022/02/08 17:00:02.917250 Starting part 2 ...
+2022-02-08 17:00:05.648 INFO: 2022/02/08 17:00:03.264288 Packing ...
+2022-02-08 17:00:05.655 INFO: 2022/02/08 17:00:03.265868 Finished writing part 1.
+2022-02-08 17:00:05.663 INFO: 2022/02/08 17:00:03.316734 Finished writing part 2.
+2022-02-08 17:00:05.670 INFO: 2022/02/08 17:00:03.357580 Starting part 3 ...
+2022-02-08 17:00:05.678 INFO: 2022/02/08 17:00:03.357660 /global/pg_control
+2022-02-08 17:00:05.685 INFO: 2022/02/08 17:00:03.358840 Finished writing part 3.
+2022-02-08 17:00:05.693 INFO: 2022/02/08 17:00:03.360072 Calling pg_stop_backup()
+2022-02-08 17:00:05.703 INFO: 2022/02/08 17:00:05.492241 Starting part 4 ...
+2022-02-08 17:00:05.713 INFO: 2022/02/08 17:00:05.492365 backup_label
+2022-02-08 17:00:05.720 INFO: 2022/02/08 17:00:05.492386 tablespace_map
+2022-02-08 17:00:05.729 INFO: 2022/02/08 17:00:05.493336 Finished writing part 4.
+2022-02-08 17:00:05.740 INFO: 2022/02/08 17:00:05.546352 Wrote backup with name base_000000010000000000000005
+2022-02-08 17:00:05.749 INFO: Backup Completed
+2022-02-08 17:10:03.962 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:10:04.171 INFO: 2022/02/08 17:10:04.162912 FILE PATH: 000000010000000000000006.br
+2022-02-08 17:10:04.182 INFO: WAL Backup Completed
+2022-02-08 17:20:03.690 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:20:03.901 INFO: 2022/02/08 17:20:03.892253 FILE PATH: 000000010000000000000007.br
+2022-02-08 17:20:03.912 INFO: WAL Backup Completed
+2022-02-08 17:30:04.667 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:30:04.885 INFO: 2022/02/08 17:30:04.877457 FILE PATH: 000000010000000000000008.br
+2022-02-08 17:30:04.895 INFO: WAL Backup Completed
+2022-02-08 17:40:04.706 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:40:04.907 INFO: 2022/02/08 17:40:04.899801 FILE PATH: 000000010000000000000009.br
+2022-02-08 17:40:04.920 INFO: WAL Backup Completed
+2022-02-08 17:50:04.633 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 17:50:04.829 INFO: 2022/02/08 17:50:04.821943 FILE PATH: 00000001000000000000000A.br
+2022-02-08 17:50:04.840 INFO: WAL Backup Completed
+2022-02-08 18:00:01.819 INFO: Start Backup (backup-push.sh)
+2022-02-08 18:00:02.417 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:00:02.627 INFO: 2022/02/08 18:00:02.621819 FILE PATH: 00000001000000000000000B.br
+2022-02-08 18:00:02.635 INFO: WAL Backup Completed
+2022-02-08 18:00:03.138 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:00:03.302 INFO: 2022/02/08 18:00:03.290973 FILE PATH: 00000001000000000000000C.00000028.backup.br
+2022-02-08 18:00:03.313 INFO: 2022/02/08 18:00:03.293525 FILE PATH: 00000001000000000000000C.br
+2022-02-08 18:00:03.324 INFO: WAL Backup Completed
+2022-02-08 18:00:03.349 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:00:03.414 INFO: WAL Backup Completed
+2022-02-08 18:00:04.212 INFO: 2022/02/08 18:00:01.909027 Selecting the latest backup as the base for the current delta backup...
+2022-02-08 18:00:04.225 INFO: 2022/02/08 18:00:02.053496 Delta backup from base_000000010000000000000005 with LSN 5000028.
+2022-02-08 18:00:04.233 INFO: 2022/02/08 18:00:02.070519 Calling pg_start_backup()
+2022-02-08 18:00:04.243 INFO: 2022/02/08 18:00:02.989279 Delta backup enabled
+2022-02-08 18:00:04.253 INFO: 2022/02/08 18:00:02.989317 Starting a new tar bundle
+2022-02-08 18:00:04.263 INFO: 2022/02/08 18:00:02.989368 Walking ...
+2022-02-08 18:00:04.273 INFO: 2022/02/08 18:00:02.989735 Starting part 1 ...
+2022-02-08 18:00:04.284 INFO: 2022/02/08 18:00:02.990071 Starting part 2 ...
+2022-02-08 18:00:04.295 INFO: 2022/02/08 18:00:03.026166 Packing ...
+2022-02-08 18:00:04.306 INFO: 2022/02/08 18:00:03.026669 Finished writing part 1.
+2022-02-08 18:00:04.317 INFO: 2022/02/08 18:00:03.036892 Finished writing part 2.
+2022-02-08 18:00:04.328 INFO: 2022/02/08 18:00:03.046021 Starting part 3 ...
+2022-02-08 18:00:04.339 INFO: 2022/02/08 18:00:03.046120 /global/pg_control
+2022-02-08 18:00:04.349 INFO: 2022/02/08 18:00:03.049639 Finished writing part 3.
+2022-02-08 18:00:04.358 INFO: 2022/02/08 18:00:03.050760 Calling pg_stop_backup()
+2022-02-08 18:00:04.369 INFO: 2022/02/08 18:00:04.127225 Starting part 4 ...
+2022-02-08 18:00:04.378 INFO: 2022/02/08 18:00:04.127398 backup_label
+2022-02-08 18:00:04.388 INFO: 2022/02/08 18:00:04.127439 tablespace_map
+2022-02-08 18:00:04.398 INFO: 2022/02/08 18:00:04.137583 Finished writing part 4.
+2022-02-08 18:00:04.407 INFO: 2022/02/08 18:00:04.199235 Wrote backup with name base_00000001000000000000000C_D_000000010000000000000005
+2022-02-08 18:00:04.416 INFO: Backup Completed
+2022-02-08 18:10:03.894 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:10:04.093 INFO: 2022/02/08 18:10:04.084468 FILE PATH: 00000001000000000000000D.br
+2022-02-08 18:10:04.104 INFO: WAL Backup Completed
+2022-02-08 18:20:03.845 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:20:04.056 INFO: 2022/02/08 18:20:04.047960 FILE PATH: 00000001000000000000000E.br
+2022-02-08 18:20:04.068 INFO: WAL Backup Completed
+2022-02-08 18:30:03.576 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:30:03.793 INFO: 2022/02/08 18:30:03.785145 FILE PATH: 00000001000000000000000F.br
+2022-02-08 18:30:03.803 INFO: WAL Backup Completed
+2022-02-08 18:40:03.157 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:40:03.371 INFO: 2022/02/08 18:40:03.361487 FILE PATH: 000000010000000000000010.br
+2022-02-08 18:40:03.382 INFO: WAL Backup Completed
+2022-02-08 18:50:04.733 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 18:50:04.950 INFO: 2022/02/08 18:50:04.942488 FILE PATH: 000000010000000000000011.br
+2022-02-08 18:50:04.961 INFO: WAL Backup Completed
+2022-02-08 19:00:01.466 INFO: Start Backup (backup-push.sh)
+2022-02-08 19:00:02.296 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:00:02.552 INFO: 2022/02/08 19:00:02.544716 FILE PATH: 000000010000000000000012.br
+2022-02-08 19:00:02.565 INFO: WAL Backup Completed
+2022-02-08 19:00:03.384 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:00:03.539 INFO: 2022/02/08 19:00:03.529662 FILE PATH: 000000010000000000000013.00000028.backup.br
+2022-02-08 19:00:03.547 INFO: 2022/02/08 19:00:03.533000 FILE PATH: 000000010000000000000013.br
+2022-02-08 19:00:03.556 INFO: WAL Backup Completed
+2022-02-08 19:00:03.756 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:00:03.814 INFO: WAL Backup Completed
+2022-02-08 19:00:04.445 INFO: 2022/02/08 19:00:01.555632 Selecting the latest backup as the base for the current delta backup...
+2022-02-08 19:00:04.453 INFO: 2022/02/08 19:00:01.751838 Delta backup from base_00000001000000000000000C_D_000000010000000000000005 with LSN c000028.
+2022-02-08 19:00:04.461 INFO: 2022/02/08 19:00:01.789501 Calling pg_start_backup()
+2022-02-08 19:00:04.469 INFO: 2022/02/08 19:00:03.180918 Delta backup enabled
+2022-02-08 19:00:04.476 INFO: 2022/02/08 19:00:03.181014 Starting a new tar bundle
+2022-02-08 19:00:04.485 INFO: 2022/02/08 19:00:03.181073 Walking ...
+2022-02-08 19:00:04.492 INFO: 2022/02/08 19:00:03.181426 Starting part 1 ...
+2022-02-08 19:00:04.499 INFO: 2022/02/08 19:00:03.181756 Starting part 2 ...
+2022-02-08 19:00:04.510 INFO: 2022/02/08 19:00:03.236099 Packing ...
+2022-02-08 19:00:04.518 INFO: 2022/02/08 19:00:03.236587 Finished writing part 1.
+2022-02-08 19:00:04.528 INFO: 2022/02/08 19:00:03.242971 Finished writing part 2.
+2022-02-08 19:00:04.537 INFO: 2022/02/08 19:00:03.247186 Starting part 3 ...
+2022-02-08 19:00:04.546 INFO: 2022/02/08 19:00:03.247262 /global/pg_control
+2022-02-08 19:00:04.554 INFO: 2022/02/08 19:00:03.247940 Finished writing part 3.
+2022-02-08 19:00:04.562 INFO: 2022/02/08 19:00:03.248767 Calling pg_stop_backup()
+2022-02-08 19:00:04.570 INFO: 2022/02/08 19:00:04.375081 Starting part 4 ...
+2022-02-08 19:00:04.578 INFO: 2022/02/08 19:00:04.375178 backup_label
+2022-02-08 19:00:04.588 INFO: 2022/02/08 19:00:04.375198 tablespace_map
+2022-02-08 19:00:04.597 INFO: 2022/02/08 19:00:04.376340 Finished writing part 4.
+2022-02-08 19:00:04.605 INFO: 2022/02/08 19:00:04.437606 Wrote backup with name base_000000010000000000000013_D_00000001000000000000000C
+2022-02-08 19:00:04.613 INFO: Backup Completed
+2022-02-08 19:10:03.997 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:10:04.205 INFO: 2022/02/08 19:10:04.197159 FILE PATH: 000000010000000000000014.br
+2022-02-08 19:10:04.216 INFO: WAL Backup Completed
+2022-02-08 19:20:04.506 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:20:04.704 INFO: 2022/02/08 19:20:04.696769 FILE PATH: 000000010000000000000015.br
+2022-02-08 19:20:04.717 INFO: WAL Backup Completed
+2022-02-08 19:25:02,835 INFO waiting for cron to stop
+2022-02-08 19:25:02,836 INFO stopped: cron (terminated by SIGTERM)
+2022-02-08 19:25:05,570 INFO waiting for postgres to stop
+2022-02-08 19:25:05.571 GMT [148] LOG:  received smart shutdown request
+2022-02-08 19:25:05.606 GMT [148] LOG:  background worker "logical replication launcher" (PID 157) exited with exit code 1
+2022-02-08 19:25:05.607 GMT [151] LOG:  shutting down
+2022-02-08 19:25:05.737 INFO: Start WAL Backup(wal-push.sh)
+2022-02-08 19:25:05.922 INFO: 2022/02/08 19:25:05.916390 FILE PATH: 000000010000000000000016.br
+2022-02-08 19:25:05.935 INFO: WAL Backup Completed
+2022-02-08 19:25:06.077 GMT [148] LOG:  database system is shut down
+2022-02-08 19:25:06,078 INFO stopped: postgres (exit status 0)
+2022-02-08 19:41:02,549 INFO spawned: 'postgres' with pid 12026
+2022-02-08 19:41:02.587 GMT [12026] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-08 19:41:02.587 GMT [12026] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-08 19:41:02.587 GMT [12026] LOG:  listening on IPv6 address "::", port 5432
+2022-02-08 19:41:02.638 GMT [12026] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-08 19:41:02.818 GMT [12027] LOG:  database system was interrupted; last known up at 2022-02-08 19:00:03 GMT
+2022-02-08 19:41:02.819 GMT [12027] LOG:  creating missing WAL directory "pg_wal/archive_status"
+2022-02-08 19:41:02.932 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:03.078 ERROR: 2022/02/08 19:41:03.070069 Archive '00000002.history' does not exist.
+2022-02-08 19:41:03.088 ERROR: WAL Fetch Failed
+2022-02-08 19:41:03.096 GMT [12027] LOG:  starting archive recovery
+2022-02-08 19:41:03.109 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:03,589 INFO success: postgres entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-02-08 19:41:03,590 INFO reaped unknown pid 12071
+2022-02-08 19:41:03.592 INFO: 2022/02/08 19:41:03.400987 WAL-prefetch file:  000000010000000000000014
+2022-02-08 19:41:03.603 INFO: 2022/02/08 19:41:03.462923 WAL-prefetch file:  000000010000000000000015
+2022-02-08 19:41:03.612 INFO: WAL Fetch Completed
+2022-02-08 19:41:03.621 GMT [12027] LOG:  restored log file "000000010000000000000013" from archive
+2022-02-08 19:41:04.045 GMT [12027] LOG:  redo starts at 0/13000028
+2022-02-08 19:41:04.084 GMT [12027] LOG:  consistent recovery state reached at 0/13000138
+2022-02-08 19:41:04.086 GMT [12026] LOG:  database system is ready to accept read only connections
+2022-02-08 19:41:04.100 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:04,397 INFO reaped unknown pid 12112
+2022-02-08 19:41:04.398 INFO: 2022/02/08 19:41:04.219257 WAL-prefetch file:  000000010000000000000016
+2022-02-08 19:41:04.413 INFO: WAL Fetch Completed
+2022-02-08 19:41:04.421 GMT [12027] LOG:  restored log file "000000010000000000000014" from archive
+2022-02-08 19:41:04.600 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:04,802 INFO reaped unknown pid 12145
+2022-02-08 19:41:04.804 INFO: 2022/02/08 19:41:04.718323 WAL-prefetch file:  000000010000000000000017
+2022-02-08 19:41:04.816 ERROR: 2022/02/08 19:41:04.797173 Archive '000000010000000000000017' does not exist.
+2022-02-08 19:41:04.826 INFO: WAL Fetch Completed
+2022-02-08 19:41:04.835 GMT [12027] LOG:  restored log file "000000010000000000000015" from archive
+2022-02-08 19:41:05.111 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:05,308 INFO reaped unknown pid 12183
+2022-02-08 19:41:05.311 INFO: 2022/02/08 19:41:05.224844 WAL-prefetch file:  000000010000000000000017
+2022-02-08 19:41:05.322 INFO: 2022/02/08 19:41:05.235486 WAL-prefetch file:  000000010000000000000018
+2022-02-08 19:41:05.331 ERROR: 2022/02/08 19:41:05.303043 Archive '000000010000000000000018' does not exist.
+2022-02-08 19:41:05.342 ERROR: 2022/02/08 19:41:05.303384 Archive '000000010000000000000017' does not exist.
+2022-02-08 19:41:05.352 INFO: WAL Fetch Completed
+2022-02-08 19:41:05.362 GMT [12027] LOG:  restored log file "000000010000000000000016" from archive
+2022-02-08 19:41:05.721 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:05.870 ERROR: 2022/02/08 19:41:05.862554 Archive '000000010000000000000017' does not exist.
+2022-02-08 19:41:05.881 ERROR: WAL Fetch Failed
+2022-02-08 19:41:05.888 GMT [12027] LOG:  redo done at 0/16001D58
+2022-02-08 19:41:05.888 GMT [12027] LOG:  last completed transaction was at log time 2022-02-08 19:24:25.900475+00
+2022-02-08 19:41:05.907 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:06,270 INFO reaped unknown pid 12256
+2022-02-08 19:41:06.272 INFO: 2022/02/08 19:41:06.181014 WAL-prefetch file:  000000010000000000000017
+2022-02-08 19:41:06.282 INFO: 2022/02/08 19:41:06.242575 WAL-prefetch file:  000000010000000000000018
+2022-02-08 19:41:06.293 ERROR: 2022/02/08 19:41:06.259371 Archive '000000010000000000000017' does not exist.
+2022-02-08 19:41:06.304 ERROR: 2022/02/08 19:41:06.265186 Archive '000000010000000000000018' does not exist.
+2022-02-08 19:41:06.314 INFO: WAL Fetch Completed
+2022-02-08 19:41:06.323 GMT [12027] LOG:  restored log file "000000010000000000000016" from archive
+2022-02-08 19:41:06.483 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:06.625 ERROR: 2022/02/08 19:41:06.616899 Archive '00000002.history' does not exist.
+2022-02-08 19:41:06.635 ERROR: WAL Fetch Failed
+2022-02-08 19:41:06.644 GMT [12027] LOG:  selected new timeline ID: 2
+2022-02-08 19:41:06.826 GMT [12027] LOG:  archive recovery complete
+2022-02-08 19:41:06.841 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 19:41:06.986 ERROR: 2022/02/08 19:41:06.978549 Archive '00000001.history' does not exist.
+2022-02-08 19:41:06.997 ERROR: WAL Fetch Failed
+2022-02-08 19:41:07.673 GMT [12026] LOG:  database system is ready to accept connections

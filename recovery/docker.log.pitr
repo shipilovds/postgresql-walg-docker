@@ -1,0 +1,115 @@
+
+Trying to connect to storage https://some.addr/
+Added `s3` successfully.
+Success: Connection with storage has been established
+Bucket created successfully `s3/backup/db/test/`.
+Storage space for host has been created
+
+The files belonging to this database system will be owned by user "postgres".
+This user must also own the server process.
+
+The database cluster will be initialized with locale "en_US.utf8".
+The default database encoding has accordingly been set to "UTF8".
+The default text search configuration will be set to "english".
+
+Data page checksums are disabled.
+
+fixing permissions on existing directory /var/lib/postgresql/data ... ok
+creating subdirectories ... ok
+selecting dynamic shared memory implementation ... posix
+selecting default max_connections ... 100
+selecting default shared_buffers ... 128MB
+selecting default time zone ... Etc/UTC
+creating configuration files ... ok
+running bootstrap script ... ok
+performing post-bootstrap initialization ... ok
+syncing data to disk ... ok
+
+
+Success. You can now start the database server using:
+
+    pg_ctl -D /var/lib/postgresql/data -l logfile start
+
+waiting for server to start....2022-02-08 20:54:08.190 UTC [89] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-08 20:54:08.191 UTC [89] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-08 20:54:08.191 UTC [89] LOG:  listening on IPv6 address "::", port 5432
+2022-02-08 20:54:08.291 UTC [89] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-08 20:54:08.471 UTC [90] LOG:  database system was shut down at 2022-02-08 20:53:52 UTC
+2022-02-08 20:54:08.535 UTC [89] LOG:  database system is ready to accept connections
+ done
+server started
+CREATE DATABASE
+
+
+/usr/local/bin/docker-entrypoint.sh: ignoring /docker-entrypoint-initdb.d/*
+
+waiting for server to shut down...2022-02-08 20:54:14.265 UTC [89] LOG:  received fast shutdown request
+.2022-02-08 20:54:14.316 UTC [89] LOG:  aborting any active transactions
+2022-02-08 20:54:14.321 UTC [89] LOG:  background worker "logical replication launcher" (PID 96) exited with exit code 1
+2022-02-08 20:54:14.321 UTC [91] LOG:  shutting down
+2022-02-08 20:54:14.625 UTC [89] LOG:  database system is shut down
+ done
+server stopped
+
+PostgreSQL init process complete; ready for start up.
+
+2022-02-08 20:54:14,839 INFO Set uid to user 0 succeeded
+2022-02-08 20:54:14,852 INFO RPC interface 'supervisor' initialized
+2022-02-08 20:54:14,853 INFO supervisord started with pid 1
+2022-02-08 20:54:15,857 INFO spawned: 'postgres' with pid 134
+2022-02-08 20:54:15.897 GMT [134] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-08 20:54:15.897 GMT [134] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-08 20:54:15.897 GMT [134] LOG:  listening on IPv6 address "::", port 5432
+2022-02-08 20:54:15.942 GMT [134] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-08 20:54:16.143 GMT [135] LOG:  database system was shut down at 2022-02-08 20:54:14 GMT
+2022-02-08 20:54:16.207 GMT [134] LOG:  database system is ready to accept connections
+2022-02-08 20:54:17,209 INFO success: postgres entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-02-08 20:54:54,458 INFO waiting for postgres to stop
+2022-02-08 20:54:54.459 GMT [134] LOG:  received smart shutdown request
+2022-02-08 20:54:54.656 GMT [134] LOG:  background worker "logical replication launcher" (PID 141) exited with exit code 1
+2022-02-08 20:54:54.656 GMT [136] LOG:  shutting down
+2022-02-08 20:54:55.111 GMT [134] LOG:  database system is shut down
+2022-02-08 20:54:55,113 INFO stopped: postgres (exit status 0)
+2022-02-08 21:00:14,127 INFO spawned: 'postgres' with pid 444
+2022-02-09 21:00:14.172 GMT [444] LOG:  starting PostgreSQL 12.7 (Debian 12.7-1.pgdg100+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 8.3.0-6) 8.3.0, 64-bit
+2022-02-09 21:00:14.173 GMT [444] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2022-02-09 21:00:14.173 GMT [444] LOG:  listening on IPv6 address "::", port 5432
+2022-02-09 21:00:14.220 GMT [444] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2022-02-09 21:00:14.392 GMT [445] LOG:  database system was interrupted; last known up at 2022-02-08 19:00:02 GMT
+2022-02-09 21:00:14.392 GMT [445] LOG:  creating missing WAL directory "pg_wal/archive_status"
+2022-02-08 21:00:14.506 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:14.653 ERROR: 2022/02/08 21:00:14.645278 Archive '00000002.history' does not exist.
+2022-02-08 21:00:14.664 ERROR: WAL Fetch Failed
+2022-02-09 21:00:14.674 GMT [445] LOG:  starting point-in-time recovery to 2022-02-08 18:14:08+00
+2022-02-08 21:00:14.686 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:15,132 INFO success: postgres entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2022-02-08 21:00:15,133 INFO reaped unknown pid 491
+2022-02-08 21:00:15.135 INFO: 2022/02/08 21:00:14.954663 WAL-prefetch file:  00000001000000000000000D
+2022-02-08 21:00:15.147 INFO: 2022/02/08 21:00:14.965381 WAL-prefetch file:  00000001000000000000000E
+2022-02-08 21:00:15.155 INFO: WAL Fetch Completed
+2022-02-09 21:00:15.164 GMT [445] LOG:  restored log file "00000001000000000000000C" from archive
+2022-02-09 21:00:15.439 GMT [445] LOG:  redo starts at 0/C000028
+2022-02-09 21:00:15.497 GMT [445] LOG:  consistent recovery state reached at 0/C000100
+2022-02-09 21:00:15.498 GMT [444] LOG:  database system is ready to accept read only connections
+2022-02-08 21:00:15.513 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:15,786 INFO reaped unknown pid 533
+2022-02-08 21:00:15.789 INFO: 2022/02/08 21:00:15.636747 WAL-prefetch file:  00000001000000000000000F
+2022-02-08 21:00:15.799 INFO: WAL Fetch Completed
+2022-02-09 21:00:15.808 GMT [445] LOG:  restored log file "00000001000000000000000D" from archive
+2022-02-08 21:00:15.967 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:16,268 INFO reaped unknown pid 566
+2022-02-08 21:00:16.271 INFO: 2022/02/08 21:00:16.091075 WAL-prefetch file:  000000010000000000000010
+2022-02-08 21:00:16.283 INFO: WAL Fetch Completed
+2022-02-09 21:00:16.290 GMT [445] LOG:  restored log file "00000001000000000000000E" from archive
+2022-02-09 21:00:16.506 GMT [445] LOG:  recovery stopping before commit of transaction 596, time 2022-02-08 19:14:16.017417+00
+2022-02-09 12:00:16.506 GMT [445] LOG:  redo done at 0/E001188
+2022-02-09 21:00:16.506 GMT [445] LOG:  last completed transaction was at log time 2022-02-08 19:13:15.150981+00
+2022-02-08 21:00:16.536 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:16.679 ERROR: 2022/02/08 21:00:16.671380 Archive '00000002.history' does not exist.
+2022-02-08 21:00:16.690 ERROR: WAL Fetch Failed
+2022-02-09 21:00:16.699 GMT [445] LOG:  selected new timeline ID: 2
+2022-02-09 21:00:17.410 GMT [445] LOG:  archive recovery complete
+2022-02-08 21:00:17.424 INFO: Start Fetching WAL Backup (wal-fetch.sh)
+2022-02-08 21:00:17.582 ERROR: 2022/02/08 21:00:17.574435 Archive '00000001.history' does not exist.
+2022-02-08 21:00:17.592 ERROR: WAL Fetch Failed
+2022-02-09 21:00:18.135 GMT [444] LOG:  database system is ready to accept connections

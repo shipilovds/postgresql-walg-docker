@@ -1,0 +1,62 @@
+version: '2'
+
+services:
+
+  db:
+    build:
+      context: .
+      args:
+        POSTGRES_VERSION: ${POSTGRES_VERSION:-12.7-buster}
+        WALG_RELEASE: ${WALG_RELEASE:-v1.1}
+        YACRON_RELEASE: ${YACRON_RELEASE:-0.16.0}
+    image: postgres:${POSTGRES_IMAGE_TAG:-12-walg}
+    container_name: postgres_test
+    restart: always
+    # entrypoint:
+    #   - /usr/local/bin/docker-entrypoint.sh
+    #  will not work without 'command' if 'entrypoint' option is used
+    # command: supervisord -c /etc/supervisor/supervisord.conf
+    environment:
+      POSTGRES_HOST: "postgres"
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: "test"
+      POSTGRES_USER: "test"
+      POSTGRES_PASSWORD: "test"
+      PG_VER: "12"
+      AWS_ENDPOINT: "https://some.addr/"  # replace with your aws base url
+      WALG_S3_PREFIX: "s3://backup/db/postgres/test"
+      AWS_S3_FORCE_PATH_STYLE: 'true'
+      AWS_ACCESS_KEY_ID: "admin"
+      AWS_SECRET_ACCESS_KEY: "change_me"
+      PGDATA: '/var/lib/postgresql/data'
+      PGHOST: '/var/run/postgresql/'
+      WALG_UPLOAD_CONCURRENCY: 2
+      WALG_DOWNLOAD_CONCURRENCY: 2
+      WALG_UPLOAD_DISK_CONCURRENCY: 2
+      WALG_DELTA_MAX_STEPS: 7
+      WALG_COMPRESSION_METHOD: brotli
+      DATA_SOURCE_NAME: "postgresql://test:test@localhost:5432/postgres?sslmode=disable"
+    volumes:
+      - ./db_data:/var/lib/postgresql/data
+      - ./misc/init_test_db.sql:/docker-entrypoint-initdb.d/init_test_db.sql
+      # - ./configs/postgres/pg_hba.conf:/etc/postgres/pg_hba.conf
+      # - ./configs/postgres/postgresql.conf:/etc/postgres/postgresql.conf
+      # - ./configs/supervisord.conf:/etc/supervisor/supervisord.conf
+      # - ./configs/yacrontab.yml:/etc/yacrontab.yml
+    ports:
+      - 9187:9187
+      # - 5432:5432
+    networks:
+      - postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U test -h /var/run/postgresql/"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      # you can use healthcheck as 'depends_on' condition for the other services:
+      # depends_on:
+      #   db:
+      #     condition: service_healthy
+
+networks:
+  postgres:

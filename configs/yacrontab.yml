@@ -1,0 +1,18 @@
+defaults:
+  shell: /bin/bash
+  utc: true
+  timezone: UTC
+  environment:
+    - key: WALG_LOG_DEST
+      value: /dev/stdout
+jobs:
+  - name: db-test
+    command: /usr/local/bin/db-test.sh
+    schedule: "0 /30 * * *"
+    captureStdout: true
+    captureStderr: true
+  - name: backup-push
+    command: /usr/local/bin/backup-push.sh
+    schedule: "0 * * * *"
+    captureStdout: true
+    captureStderr: true
