@@ -44,6 +44,11 @@ fi
 
 clear
 
+log "INFO: Ensure that PGDATA exists..."
+mkdir -p $PGDATA
+chown postgres:root $PGDATA
+chmod 700 $PGDATA
+
 log "INFO: Cleaning PGDATA..."
 rm -rf $PGDATA/*
 cd $PGDATA

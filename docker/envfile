@@ -14,9 +14,10 @@ PGPORT=5432
 # Wal-g vars
 WALG_DELTA_MAX_STEPS=1
 WALG_COMPRESSION_METHOD=brotli
+#WALG_ARCHIVE_TIMEOUT=600
 
 # S3 vars
-WALG_S3_PREFIX="s3://backup/wal-g/test"
+WALG_S3_PREFIX="s3://wal-g/test"
 AWS_S3_FORCE_PATH_STYLE='true'
 AWS_ENDPOINT="https://some.addr/"  # replace with your aws base url
 AWS_ACCESS_KEY_ID="admin"

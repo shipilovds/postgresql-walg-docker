@@ -23,7 +23,7 @@ To restore data, we need to pinpoint the time in its history we wish to rewind t
 
 ## Main action
 
-I've hidden the details of the *Manual Restoration* process [here](docs/restore_manual.md) to enhance readability on this page. You can skip this part if you prefer the automated method.
+I've hidden the details of the *Manual Restoration* process [here](restore_manual.md) to enhance readability on this page. You can skip this part if you prefer the automated method.
 
 ### Automated (almost) recovery
 

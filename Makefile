@@ -9,12 +9,12 @@ POSTGRES_VERSION       ?= 14.11
 #POSTGRES_VERSION       ?= 15.6
 #POSTGRES_VERSION       ?= 16.2
 BASE_DIST              ?= bookworm
-REVISION               ?= 1.0
+REVISION               ?= 1.1
 POSTGRES_IMAGE_NAME    ?= $(REGISTRY_ADDR)/postgres-walg
 POSTGRES_IMAGE_TAG     ?= $(POSTGRES_VERSION)-$(REVISION)
 WALG_WORKER_IMAGE_NAME ?= $(REGISTRY_ADDR)/wal-g-worker
 WALG_WORKER_IMAGE_TAG  ?= $(REVISION)
-WALG_UTILS_RELEASE     ?= 1.0.0
+WALG_UTILS_RELEASE     ?= 1.0.1
 
 #============================================================================#
 #============================| General Targets |=============================#

@@ -25,7 +25,7 @@ min_wal_size = 80MB
 # archive mode settings
 archive_mode = on
 archive_command = '/var/lib/wal-g-utils/wal-push.sh %p'
-archive_timeout = 600
+archive_timeout = {{ or .WALG_ARCHIVE_TIMEOUT 600 }}
 {{- end }}
 
 {{ if ne (.WALG_RESTORE|toString) "false" -}}

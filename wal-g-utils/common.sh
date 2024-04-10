@@ -4,7 +4,7 @@ export WALG_ENABLED=${WALG_ENABLED:-'false'}
 export WALG_RESTORE=${WALG_RESTORE:-'false'}
 export WALG_LOG_DEST=${WALG_LOG_DEST:-/dev/stdout}
 export MAINTENANCE=${MAINTENANCE:-'false'}
-export DEFAULT_S3_PREFIX=${DEFAULT_S3_PREFIX:-'s3://backup/wal-g/'}
+export DEFAULT_S3_PREFIX=${DEFAULT_S3_PREFIX:-'s3://wal-g/'}
 
 USER=$(whoami)
 if [[ $USER == postgres ]]; then
@@ -94,7 +94,7 @@ check_if_master() {
 
 validate_s3_prefix() {
     if [[ "$WALG_S3_PREFIX" != "$DEFAULT_S3_PREFIX"* ]] && [[ "$WALG_VALIDATE_S3_PREFIX" == "true" ]]; then
-        log "ERROR: Wrong WALG_S3_PREFIX format or path. Try to set variable value like this: s3://backup/wal-g/your-instance-name/ "
+        log "ERROR: Wrong WALG_S3_PREFIX format or path. Try to set variable value like this: s3://wal-g/your-instance-name/ "
         echo
         exit 1
     fi

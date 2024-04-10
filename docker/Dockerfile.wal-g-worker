@@ -1,7 +1,7 @@
 #============================================================================#
 #=========================| Wal-g Worker Image |=============================#
 #============================================================================#
-FROM ghcr.io/shipilovds/wal-g-exporter as wal-g-worker
+FROM ghcr.io/shipilovds/wal-g-exporter:1.0 as wal-g-worker
 ARG DEBIAN_FRONTEND=noninteractive
 ENTRYPOINT ["bash", "/usr/bin/docker-entrypoint.sh"]
 CMD ["/usr/bin/yacron", "-c", "/etc/yacron.yml"]

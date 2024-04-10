@@ -11,7 +11,7 @@ but it incorporates some [changes](docker/Dockerfile.postgres) to enable WAL-G w
 
 ### wal-g-utils
 
-[wal-g-utils](docs/wal-g-utils.md) - A set of bash scripts useful for maintaining PostgreSQL backups and restoration. It relies on [WAL-G](#wal-g).
+[wal-g-utils](wal-g-utils.md) - A set of bash scripts useful for maintaining PostgreSQL backups and restoration. It relies on [WAL-G](#wal-g).
 
 ### sudo
 
@@ -48,7 +48,7 @@ A set of settings from the generated postgresql.conf.
 
 If `WALG_ENABLED=true`, the generator will add `archive_mode = on` and `archive_command = '/var/lib/wal-g-utils/wal-push.sh %p'` to enable wal backup through [PostgreSQL Continuous Archiving](https://www.postgresql.org/docs/current/continuous-archiving.html)
 
-> For setting up *Base Backup*, an additional container with [WAL-G Worker](docs/wal-g-worker.md) is needed.
+> For setting up *Base Backup*, an additional container with [WAL-G Worker](wal-g-worker.md) is needed.
 
 ### Maintenance Mode
 
@@ -56,7 +56,7 @@ Useful in cases when maintenance on your database is necessary. Initiates an end
 
 ### Restore from backup
 
-Refer to the [special doc page](docs/restore.md) for details.
+Refer to the [special doc page](restore.md) for details.
 
 ## Envirinment Variables
 
@@ -67,7 +67,7 @@ Refer to the [special doc page](docs/restore.md) for details.
 | AWS_SECRET_ACCESS_KEY   |                    | Confidential credential for secure access to AWS resources.                                                             |
 | AWS_REGION              |                    | Necessary when using separate regions.                                                                                  |
 | AWS_S3_FORCE_PATH_STYLE |                    | Enables path-style addressing when connecting to an S3 service that lacks support for sub-domain style bucket URL.      |
-| DEFAULT_S3_PREFIX       | s3://backup/wal-g/ | Default S3 prefix template.                                                                                             |
+| DEFAULT_S3_PREFIX       | s3://wal-g/        | Default S3 prefix template.                                                                                             |
 | MAINTENANCE             | false              | Maintenance mode switcher. When set to `true`, nothing starts in the container except limitless `sleep 1`.              |
 | PGHOST                  |                    | Name of host (or Unix-domain socket path) to connect to.                                                                |
 | PGUSER                  |                    | PostgreSQL username for connection.                                                                                     |
@@ -76,7 +76,8 @@ Refer to the [special doc page](docs/restore.md) for details.
 | POSTGRES_DB             | postgres           | Defines a different name for the default database that is created when the image is first started.                      |
 | WALG_ENABLED            | false              | WAL-G switcher. WAL-G utility will not work if not set to 'true'.                                                       |
 | WALG_S3_PREFIX          |                    | Component of the object key that precedes the object's name, resembling a pseudo-directory structure within the bucket. |
-| WALG_VALIDATE_S3_PREFIX | true               | When set to `true`, validates if `WALG_S3_PREFIX` corresponds to `DEFAULT_S3_PREFIX`. Fails if not.                    |
+| WALG_VALIDATE_S3_PREFIX | true               | When set to `true`, validates if `WALG_S3_PREFIX` corresponds to `DEFAULT_S3_PREFIX`. Fails if not.                     |
+| WALG_ARCHIVE_TIMEOUT    | 600                | PostgresQL `archive_timeout` option in `postgresql.conf`. Timeout in second to archive complited WAL segments.          |
 
 Other possible environment variables:
 

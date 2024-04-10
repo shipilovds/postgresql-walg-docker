@@ -30,7 +30,7 @@ To interact with S3, processes use [Envirinment Variables](#environment-variable
 [Yacron](https://github.com/gjcarneiro/yacron) - A modern Cron replacement that is Docker-friendly.
 Main process of this container. Runs other processes on schedule.
 
-Config file you can find [here](configs/yacron.yml).
+Config file you can find [here](../configs/yacron.yml).
 
 ### WAL-G
 
@@ -38,7 +38,7 @@ Config file you can find [here](configs/yacron.yml).
 
 ### wal-g-utils
 
-[wal-g-utils](docs/wal-g-utils.md) - A set of bash scripts useful for maintaining PostgreSQL backups and their restoration. It depends on [WAL-G](#wal-g).
+[wal-g-utils](wal-g-utils.md) - A set of bash scripts useful for maintaining PostgreSQL backups and their restoration. It depends on [WAL-G](#wal-g).
 
 ### WAL-G Exporter
 
@@ -67,7 +67,7 @@ In case we need something...
 | AWS_SECRET_ACCESS_KEY   |                    | ✅        | Confidential credential for secure access to AWS resources.                                                             |
 | AWS_REGION              |                    |           | Needed when you use separate regions.                                                                                   |
 | AWS_S3_FORCE_PATH_STYLE |                    |           | To enable path-style addressing when connecting to an S3 service that lack of support for sub-domain style bucket URL   |
-| DEFAULT_S3_PREFIX       | s3://backup/wal-g/ |           | Default S3 prefix template.                                                                                             |
+| DEFAULT_S3_PREFIX       | s3://wal-g/        |           | Default S3 prefix template.                                                                                             |
 | MAINTENANCE             | false              |           | Maintenance mode switcher. When set to `true` - nothing starts in container except limitless `sleep 1`.                 |
 | PGHOST                  |                    | ✅        | Name of host (or Unix-domain socket path) to connect to.                                                                |
 | PGUSER                  |                    | ✅        | PostgreSQL username.                                                                                                    |
@@ -83,7 +83,7 @@ Other possible environment variables:
 
 ## Additional things for testing purposes
 
-Add this to jobs to [yacron config](configs/yacron.yml)
+Add this to jobs to [yacron config](../configs/yacron.yml)
 ```yaml
   - name: db-test
     command: /usr/bin/db-test.sh
