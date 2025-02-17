@@ -7,11 +7,12 @@ ARG BASE_DIST
 FROM postgres:$POSTGRES_VERSION-$BASE_DIST as postgres
 ARG DEBIAN_FRONTEND=noninteractive
 EXPOSE 5432
-RUN apt update && apt install -y curl dialog sudo && rm -rf /var/lib/apt/lists/*
+RUN apt update && apt install -y curl dialog patch sudo && rm -rf /var/lib/apt/lists/*
 RUN mkdir -p /var/lib/wal-g-utils/
 COPY --chmod=755 --from=subfuzion/envtpl                  /bin/envtpl      /usr/bin/envtpl
 COPY --chmod=755 --from=ghcr.io/shipilovds/wal-g-exporter /usr/bin/wal-g   /usr/bin/wal-g
-COPY --chmod=755   docker/entrypoint.postgres.sh   /usr/local/bin/docker-entrypoint.sh
+COPY --chmod=644   docker/entrypoint.patch   /entrypoint.patch
+RUN patch -p1 < /entrypoint.patch && rm -f /entrypoint.patch
 COPY --chmod=644   wal-g-utils/common.sh           /var/lib/wal-g-utils/
 COPY --chmod=755   wal-g-utils/backup-fetch.sh     /var/lib/wal-g-utils/
 COPY --chmod=755   wal-g-utils/backup-list.sh      /var/lib/wal-g-utils/

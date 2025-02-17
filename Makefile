@@ -4,10 +4,10 @@
 
 REGISTRY_USER          ?= shipilovds
 REGISTRY_ADDR          ?= ghcr.io/$(REGISTRY_USER)
-POSTGRES_VERSION       ?= 14.11
-# TODO:
-#POSTGRES_VERSION       ?= 15.6
-#POSTGRES_VERSION       ?= 16.2
+#POSTGRES_VERSION       ?= 14.16
+#POSTGRES_VERSION       ?= 15.11
+#POSTGRES_VERSION       ?= 16.7
+POSTGRES_VERSION       ?= 17.3
 BASE_DIST              ?= bookworm
 REVISION               ?= 1.1
 POSTGRES_IMAGE_NAME    ?= $(REGISTRY_ADDR)/postgres-walg
